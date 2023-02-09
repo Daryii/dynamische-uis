@@ -18,7 +18,27 @@
         spaceShip.run(function () {
             // code  start
 
+            spaceShip.moveForward(); spaceShip.moveForward(); spaceShip.rotateRight();
+            spaceShip.moveForward(); spaceShip.moveForward(); spaceShip.rotateLeft();
+            spaceShip.moveForward(); spaceShip.moveForward(); spaceShip.rotateLeft();
+            spaceShip.moveForward(); spaceShip.moveForward(); spaceShip.moveForward(); spaceShip.moveForward();
 
+            spaceShip.wait();
+
+            spaceShip.moveForward(); spaceShip.rotateRight(); spaceShip.moveForward();
+            spaceShip.moveForward(); spaceShip.moveForward(); spaceShip.rotateRight();
+            spaceShip.moveForward(); spaceShip.rotateRight(); spaceShip.moveForward();
+            spaceShip.rotateRight(); spaceShip.moveForward(); spaceShip.moveForward();
+
+            spaceShip.wait()
+            spaceShip.wait()
+            spaceShip.wait()
+
+            spaceShip.moveForward();
+            spaceShip.rotateLeft();
+
+            for (let i = 0; i < 5; i++)
+                spaceShip.moveForward();
 
             // code  einde
         });

@@ -20,12 +20,15 @@
         //Eigen acties
         spaceShip.run(function () {
             // code  start
-            let i = 0;
-            while (i < 10) {
-                spaceShip.wait();
-            }
 
-
+            spaceShip.wait(); spaceShip.wait();
+            for(let i = 0; i < 3; i++)
+                spaceShip.moveBackward();
+            spaceShip.wait(); spaceShip.wait();
+            for(let i = 0; i < 3; i++)
+                spaceShip.moveBackward();   
+            spaceShip.wait();spaceShip.wait();
+            for(let i = 0; i < 3; i++) spaceShip.moveBackward();
 
 
             // code  einde
