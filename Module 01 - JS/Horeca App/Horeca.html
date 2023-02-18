@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,14 +8,44 @@
 </head>
 <body>
     <style>
-        #uitkomst,#bonnetje{
+        #uitkomst{
             text-align: center;
         }
     </style>
-    
+
     <div id="uitkomst"></div>
-    <div id="bonnetje"></div>
 
     <script src="Horeca.js"></script>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bestellingen Bar</title>
+</head>
+<body>
+	<h1>Welkom bij de Bar!</h1>
+	<form>
+		<h2>Bestellingen</h2>
+		<label for="drankje">Kies een drankje:</label>
+		<select id="drankje" name="drankje">
+			<option value="bier">Bier</option>
+			<option value="wijn">Wijn</option>
+			<option value="frisdrank">Frisdrank</option>
+		</select>
+		<label for="aantal">Aantal:</label>
+		<input type="number" id="aantal" name="aantal">
+		<button type="button" onclick="addBestelling()">Toevoegen</button>
+	</form>
+	<button type="button" onclick="showRekening()">Rekening tonen</button>
+	<h2>Bestellingen:</h2>
+	<ul id="bestellingen"></ul>
+	<h2>Rekening:</h2>
+	<p id="rekening"></p>
+	<script src="script.js"></script>
 </body>
 </html>
