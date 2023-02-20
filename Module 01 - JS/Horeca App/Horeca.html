@@ -1,51 +1,22 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horeca</title>
-</head>
-<body>
-    <style>
-        #uitkomst{
-            text-align: center;
-        }
-    </style>
-
-    <div id="uitkomst"></div>
-
-    <script src="Horeca.js"></script>
-</body>
-</html> -->
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Bestellingen Bar</title>
+	<title>Horeca</title>
 </head>
 <body>
-	<h1>Welkom bij de Bar!</h1>
-	<form>
-		<h2>Bestellingen</h2>
-		<label for="drankje">Kies een drankje:</label>
-		<select id="drankje" name="drankje">
-			<option value="bier">Bier</option>
-			<option value="wijn">Wijn</option>
-			<option value="frisdrank">Frisdrank</option>
-		</select>
-		<label for="aantal">Aantal:</label>
-		<input type="number" id="aantal" name="aantal">
-		<button type="button" onclick="addBestelling()">Toevoegen</button>
-	</form>
-	<button type="button" onclick="showRekening()">Rekening tonen</button>
-	<h2>Bestellingen:</h2>
-	<ul id="bestellingen"></ul>
-	<h2>Rekening:</h2>
-	<p id="rekening"></p>
-	<script src="script.js"></script>
+	<h1>Welkom bij W Bar</h1>
+	<p>U heeft zeven pogingen om een drankje te bestellen.</p>
+	<p>Geldige drankjes zijn: fris, bier en wijn.</p>
+	<p>Voer alstublieft de naam van het drankje in en vervolgens het aantal dat u wilt bestellen.</p>
+	<p>Veel plezier met bestellen!</p>
+
+	<script src="Horeca.js"></script>
+	<button onclick=toonRekening()>Bestel</button>
+	<p id="uitkomst"></p>
+
+	
+
+
 </body>
 </html>
+

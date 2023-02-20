@@ -1,93 +1,40 @@
+let uitkomst = "";
+let poging = 7;
 
-// let uitkomst = ""
-// let pogging = 7
-// const drank = ["fris","bier","wijn"]
+const drankjes = ["fris","bier","wijn"];
+const prijzen = {"fris": 1.62, "bier": 2.62, "wijn": 9.99};
 
-// let fris_prijs = 1.62
-// let bier_prijs = 2.62
-// let wijn_prijs = 9.99
+let BTW = 0.21;
+let total = 0;
 
-// let BTW = 0.21;
-// let total = 0;
-
-// while (pogging > 0) {
-//     let vraag = prompt("Wat wilt uw bestellen?: ");
-//     if (!drank.includes(vraag)) {
-//         console.log("Dit kan ik niet.");
-//         pogging --;
-//     } else {
-//         console.log("uw bestelling is: " + vraag)
-//         c = false;
-//         break;
-//     }
-// let Hoeveelheid = parseInt(prompt("Hoeveel"+ vraag +"drankjes wilt u hebben"))
-// if (Hoeveelheid > 0) {
-//     let bonnetje = Hoeveelheid * parseInt(vraag)
-//     let sum = total * BTW
-//     total += sum;
-//     console.log(bonnetje)
-
-// }
-
-// }
-// if (pogging == 0){
-//     console.log("uw hebt te vaak ongeldige keuze ingevoerd!")
-// }
-
-
-
-// document.getElementById("uitkomst").innerHTML = uitkomst;
-
-
-
-
-// Array van drankjes en hun prijzen
-const drankjes = {
-	bier: 2.50,
-	wijn: 4.00,
-	frisdrank: 1.50
-};
-
-// Array van bestellingen
-let bestellingen = [];
-
-// Toevoegen van een bestelling
-function addBestelling() {
-	const drankje = document.getElementById("drankje").value;
-	const aantal = parseInt(document.getElementById("aantal").value);
-
-	if (!isNaN(aantal) && aantal > 0) {
-		bestellingen.push({drankje: drankje, aantal: aantal});
-		updateBestellingen();
-	}
+function toonRekening() {
+  uitkomst = "Uw rekening is " + total.toFixed(2) + " euro (inclusief " + (BTW * 100) + "% BTW).";
+  document.getElementById("uitkomst").innerHTML = uitkomst;
 }
 
-// Tonen van de bestellingen
-function updateBestellingen() {
-	let bestellingenHTML = "";
-	bestellingen.forEach(function(bestelling) {
-		bestellingenHTML += "<li>" + bestelling.aantal + "x " + bestelling.drankje + "</li>";
-	});
-	document.getElementById("bestellingen").innerHTML = bestellingenHTML;
+function voegBestellingToe() {
+  let vraag = prompt("Wat wilt u bestellen?: ");
+  if (!drankjes.includes(vraag)) {
+    console.log("Dit kan ik niet.");
+    poging--;
+    if (poging == 0) {
+      console.log("U heeft te vaak een ongeldige keuze ingevoerd!");
+      toonRekening();
+    } else {
+      voegBestellingToe();
+    }
+  } else {
+    console.log("Uw bestelling is: " + vraag);
+    let hoeveelheid = parseInt(prompt("Hoeveel " + vraag + " drankjes wilt u hebben?"));
+    if (hoeveelheid > 0) {
+      let bonnetje = hoeveelheid * prijzen[vraag];
+      total += bonnetje;
+      console.log("U heeft " + hoeveelheid + " " + vraag + " besteld voor " + bonnetje.toFixed(2) + " euro.");
+    }
+    toonRekening();
+  }
 }
 
-// Berekenen van de rekening
-function berekenRekening() {
-    let rekening = "";
+voegBestellingToe();
 
-	// Berekenen van de kosten per type drankje
-	const kostenPerType = {};
-	bestellingen.forEach(function(bestelling) {
-		const prijs = drankjes[bestelling.drankje];
-		const kosten = prijs * bestelling.aantal;
-		if (bestelling.drankje in kostenPerType) {
-			kostenPerType[bestelling.drankje] += kosten;
-		} else {
-			kostenPerType[bestelling.drankje] = kosten;
-		}
-	});
 
-	// Toevoegen van de kosten per type drankje aan de rekening
-	Object.keys(kostenPerType).forEach(function(drankje)
-
-}
