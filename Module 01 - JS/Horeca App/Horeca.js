@@ -11,6 +11,16 @@ let bestellingen = {};
 function toonRekening() {
   uitkomst = "Uw rekening is " + total.toFixed(2) + " euro (inclusief " + (BTW * 100) + "% BTW).";
   console.log(uitkomst);
+  
+  let bon = "<h2>Uw bestelling:</h2>";
+  for (let drank of drankjes) {
+    if (bestellingen[drank] > 0) {
+      bon += `<p>${drank}: ${bestellingen[drank]} x €${prijzen[drank].toFixed(2)} = €${(bestellingen[drank] * prijzen[drank]).toFixed(2)}</p>`;
+    }
+  }
+  bon += `<p>Totaal: €${total.toFixed(2)}</p>`;
+  
+  document.getElementById("bon").innerHTML = bon;
 }
 
 function voegBestellingToe() {
@@ -31,15 +41,15 @@ function voegBestellingToe() {
     console.log("Uw bestelling is: " + vraag);
     let hoeveelheid = parseInt(prompt("Hoeveel " + vraag + " drankjes wilt u hebben?"));
     if (hoeveelheid > 0) {
-      if (hoeveelheid > 0) {
         let bonnetje = hoeveelheid * prijzen[vraag];
         total += bonnetje;
+        bestellingen[vraag] = hoeveelheid;
         console.log("U heeft " + hoeveelheid + " " + vraag + " besteld voor " + bonnetje.toFixed(2) + " euro.");
       }
       toonRekening();
     }
   }
-}
+
 
 let v = "ja";
 while (v == "ja") {
@@ -50,4 +60,5 @@ while (v == "ja") {
   }
 }
 
-document.getElementById("uitkomst").innerHTML = uitkomst
+
+
