@@ -41,14 +41,15 @@ function voegBestellingToe() {
     console.log("Uw bestelling is: " + vraag);
     let hoeveelheid = parseInt(prompt("Hoeveel " + vraag + " drankjes wilt u hebben?"));
     if (hoeveelheid > 0) {
-        let bonnetje = hoeveelheid * prijzen[vraag];
-        total += bonnetje;
-        bestellingen[vraag] = hoeveelheid;
-        console.log("U heeft " + hoeveelheid + " " + vraag + " besteld voor " + bonnetje.toFixed(2) + " euro.");
-      }
-      toonRekening();
+      let bonnetje = hoeveelheid * prijzen[vraag];
+      total += bonnetje;
+      bestellingen[vraag] = (bestellingen[vraag] || 0) + hoeveelheid;
+      console.log("U heeft " + hoeveelheid + " " + vraag + " besteld voor " + bonnetje.toFixed(2) + " euro per stuk.");
     }
+    toonRekening();
   }
+}
+
 
 
 let v = "ja";
