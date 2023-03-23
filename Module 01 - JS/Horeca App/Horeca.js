@@ -51,7 +51,6 @@ function voegBestellingToe() {
 }
 
 
-
 let v = "ja";
 while (v == "ja") {
   voegBestellingToe();
