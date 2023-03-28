@@ -1,37 +1,17 @@
-/* 
-#button_1{
-    margin-top: 50px;
-    margin-left: 20px;
-    padding: 20px;
-    font-size: 16px;
-    background-color: rgb(13, 160, 13);
-    color: white;   
-}
-
-#button_2{
-    padding: 20px;
-    font-size: 16px;
-    background-color: rgb(13, 160, 13);
-    color: white;
-}
-
-#button_3{
-    padding: 20px;
-    font-size: 16px;
-    background-color: rgb(13, 160, 13);
-    color: white;;
-} */
-
-
-.my-button {
-    font-size: 16px;
-    padding: 10px;
+.container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+ 
+ }
+ 
+ button {
+    width: 40px;
+    height: 45px;
+    margin: 10px;
     background-color: rgb(19, 196, 57);
     color: white;
-    margin: 10px;
-  }
-  
-.container{
-    height: 600px;
-    width: 600px;
-}
+   
+ }
+ 
+ 
