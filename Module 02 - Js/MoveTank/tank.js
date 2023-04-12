@@ -1,52 +1,27 @@
 var image = document.getElementById("image");
+var position = 0; // initialize the position of the tank
 
 document.onkeydown = checkKey;
-image.style.transform = "rotate(90deg)"
+image.style.transform = "rotate(90deg)";
 
 function checkKey(e) {
-	console.log("key nr = " + e.keyCode);
+    console.log("key nr = " + e.keyCode);
     e = e || window.event;
-    if(e.keyCode == 32){
-    	console.log("spacebar");
-    } else if (e.keyCode == '38') {  // up arrow
+    if (e.keyCode == 32) {
+        console.log("spacebar");
+    } else if (e.keyCode == '38') { // up arrow
         console.log("Up arrow");
+        position -= 10; // move the tank up
+        image.style.top = position + "px"; // update the top position
     } else if (e.keyCode == '40') { // down arrow
         console.log("down arrow");
+        position += 10; // move the tank down
+        image.style.top = position + "px"; // update the top position
     } else if (e.keyCode == '37') { // left arrow
-    	console.log("left arrow");
-    } else if (e.keyCode == '39') {   // right arrow
-    	console.log("right arrow");
-    	image.style.backgroundPosition = `164px 0px`; // check goed de rupsband
+        console.log("left arrow");
+        image.style.backgroundPosition = "0px 0px"; // animate the left track
+    } else if (e.keyCode == '39') { // right arrow
+        console.log("right arrow");
+        image.style.backgroundPosition = "-164px 0px"; // animate the right track
     }
 }
-
-var tID; //we will use this variable to clear the setInterval()
-
-function stopAnimate() {
-  clearInterval(tID);
-} //end of stopAnimate()
-
-
-function animateScript() {
-
-  var position = 164; //start position for the image slicer
-  const interval = 100; //100 ms of interval for the setInterval()
-  const diff = 80; //diff as a variable for position offset
-  
-  tID = setInterval(() => {
-  
-    document.getElementById("image").style.backgroundPosition =
-    `${position}px 0px`;
-    //we use the ES6 template literal to insert the variable "position"
-    
-    if (position < 2560) {
-      position = position + diff;
-    }
-    //we increment the position by 256 each time
-    else {
-      position = 80;
-    }
-    //reset the position to 256px, once position exceeds 1536px
-    
-  }, interval); //end of setInterval
-} //end of animateScript()
