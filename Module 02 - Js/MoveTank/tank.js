@@ -1,27 +1,63 @@
 var image = document.getElementById("image");
-var position = 0; // initialize the position of the tank
+const tankmovement = [84,168,252,336,420,504,588,672]
+let banden = 0;
+let posleft = 0;
+let postop = 0;
 
 document.onkeydown = checkKey;
-image.style.transform = "rotate(90deg)";
+image.style.transform = "rotate(90deg)"
+
+function moveRight() {
+    posleft += 10
+    document.getElementById('image').style.left  = posleft + `px`;  
+    console.log(document.getElementById('image').style.left)
+}   
+
+function moveLeft() {
+    posleft -= 10
+    document.getElementById('image').style.left  = posleft + `px`;  
+
+}   
+
+// function moveUp() {
+//     posleft += 10
+//     document.getElementById('image').style.top  = postop + `px`;  
+// }   
+
+// function moveDown() {
+//     posleft -= 10
+//     document.getElementById('image').style.top  = postop + `px`;  
+// }   
 
 function checkKey(e) {
-    console.log("key nr = " + e.keyCode);
+	console.log("key nr = " + e.keyCode);
     e = e || window.event;
-    if (e.keyCode == 32) {
-        console.log("spacebar");
-    } else if (e.keyCode == '38') { // up arrow
+    if(e.keyCode == 32){
+    	console.log("spacebar");
+    } else if (e.keyCode == '38') {  // up arrow
         console.log("Up arrow");
-        position -= 10; // move the tank up
-        image.style.top = position + "px"; // update the top position
     } else if (e.keyCode == '40') { // down arrow
         console.log("down arrow");
-        position += 10; // move the tank down
-        image.style.top = position + "px"; // update the top position
+
     } else if (e.keyCode == '37') { // left arrow
-        console.log("left arrow");
-        image.style.backgroundPosition = "0px 0px"; // animate the left track
-    } else if (e.keyCode == '39') { // right arrow
-        console.log("right arrow");
-        image.style.backgroundPosition = "-164px 0px"; // animate the right track
+    	console.log("left arrow");
+        image.style.transform = "rotate(-90deg)"
+        moveLeft()
+    	image.style.backgroundPosition = tankmovement[banden] + `px 0px`; // check goed de rupsband
+        banden++;
+        if (banden >= 7) {
+            banden = 0;
+        }
+
+    } else if (e.keyCode == '39') {   // right arrow
+    	console.log("right arrow");
+        image.style.transform = "rotate(90deg)"
+        moveRight()
+    	image.style.backgroundPosition = tankmovement[banden] + `px 0px`; // check goed de rupsband
+        banden++;
+        if (banden >= 7) {
+            banden = 0;
+        }
+        
     }
 }
