@@ -19,16 +19,6 @@ function moveLeft() {
 
 }   
 
-// function moveUp() {
-//     posleft += 10
-//     document.getElementById('image').style.top  = postop + `px`;  
-// }   
-
-// function moveDown() {
-//     posleft -= 10
-//     document.getElementById('image').style.top  = postop + `px`;  
-// }   
-
 function checkKey(e) {
 	console.log("key nr = " + e.keyCode);
     e = e || window.event;
