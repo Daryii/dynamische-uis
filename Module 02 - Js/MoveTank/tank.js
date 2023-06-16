@@ -5,16 +5,16 @@ let posleft = 0;
 let postop = 0;
 
 document.onkeydown = checkKey;
-image.style.transform = "rotate(90deg)"
+image.style.transform = "rotate(90deg)";
 
 function moveRight() {
     posleft += 10
     document.getElementById('image').style.left  = posleft + `px`;  
-    console.log(document.getElementById('image').style.left)
+    console.log(document.getElementById('image').style.left);
 }   
 
 function moveLeft() {
-    posleft -= 10
+    posleft -= 10;
     document.getElementById('image').style.left  = posleft + `px`;  
 
 }   
@@ -31,8 +31,8 @@ function checkKey(e) {
 
     } else if (e.keyCode == '37') { // left arrow
     	console.log("left arrow");
-        image.style.transform = "rotate(-90deg)"
-        moveLeft()
+        image.style.transform = "rotate(-90deg)";
+        moveLeft();
     	image.style.backgroundPosition = tankmovement[banden] + `px 0px`; // check goed de rupsband
         banden++;
         if (banden >= 7) {

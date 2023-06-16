@@ -3,17 +3,21 @@ const aantalButtons = 30;
 const container = document.getElementById('container');
 
 
-for (let i = 0; i < aantalButtons;i++){
+for (var i = 0; i < aantalButtons;i++){
     const button = document.createElement('button');
     button.style.backgroundColor = 'green';
     button.textContent = i + 1;
     container.appendChild(button);
 
-    let click = 0;
+ 
 
     button.addEventListener("click", function() { 
+      console.dir(button)
       click++;
-      
+
+
+      let click = 0;
+   
       if (click  === 1){
         button.style.backgroundColor = 'red';
         console.log(`Button ${i+1} is ${click} keer aangeklikt!`);
@@ -38,6 +42,7 @@ for (let i = 0; i < aantalButtons;i++){
     if ((i + 1) % aantalPerRij === 0) {
         container.appendChild(document.createElement("br"));
       }
+
 }
 
 
