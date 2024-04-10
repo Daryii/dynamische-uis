@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>piramideArr</title>
+</head>
+<body>
+    <div id="main-container">
+        <h2>Piramide oplopend</h2>
+    </div>
+    <script>
+        let userInput = parseInt(prompt("Voer een getal in:")); 
+
+            let priamideArr = [];
+            for (let i = 0; i <= userInput; i++) {
+                priamideArr.push(i);
+            }
+
+            for (let i = 0; i <= userInput; i++) {
+                let resultaatContainer = document.createElement("p");
+                resultaatContainer.textContent = priamideArr.slice(0, i + 1).join(" ");
+                document.getElementById("main-container").appendChild(resultaatContainer);
+            }  
+        
+
+    </script>
+</body>
+</html>
