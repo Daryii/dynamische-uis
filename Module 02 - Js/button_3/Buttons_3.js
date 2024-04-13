@@ -1,7 +1,7 @@
 const aantalPerRij = 5;
 const aantalButtons = 30;
 const container = document.getElementById('container');
-
+let click = 0;
 
 for (var i = 0; i < aantalButtons;i++){
     const button = document.createElement('button');
@@ -10,13 +10,9 @@ for (var i = 0; i < aantalButtons;i++){
     container.appendChild(button);
 
  
-
     button.addEventListener("click", function() { 
       console.dir(button)
       click++;
-
-
-      let click = 0;
    
       if (click  === 1){
         button.style.backgroundColor = 'red';
