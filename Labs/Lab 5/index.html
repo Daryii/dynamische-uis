@@ -23,46 +23,48 @@
     </style>
 </head>
 <body>
-    <div id="personInfo" class="person-info">
-        <h2>Gegevens van de persoon:</h2>
-        <p><strong>Voornaam:</strong> <span id="firstName"></span></p>
-        <p><strong>Achternaam:</strong> <span id="lastName"></span></p>
-        <p><strong>Nationaliteit:</strong> <span id="nationality"></span></p>
-        <p><strong>Leeftijd:</strong> <span id="age"></span></p>
-        <p><strong>Gewicht:</strong> <span id="weight"></span></p>
-    </div>
+    <div id="personContainer"></div>
 
     <script>
         // JavaScript om gegevens op te halen en weer te geven
 
-        // Functie om gegevens op te halen en weer te geven
-        function showPersonInfo(data) {
-            // Gegevens ophalen vanuit het JSON-bestand
-            let firstName = data.voornaam;
-            let lastName = data.achternaam;
-            let nationality = data.nationaliteit;
-            let age = data.leeftijd;
-            let weight = data.gewicht;
+        // Functie om gegevens van meerdere personen op te halen en weer te geven
+        function showPeopleInfo(data) {
+            // Element vinden om personen in weer te geven
+            var container = document.getElementById('personContainer');
 
-            // Gegevens toevoegen aan de HTML-elementen
-            document.getElementById('firstName').innerText = firstName;
-            document.getElementById('lastName').innerText = lastName;
-            document.getElementById('nationality').innerText = nationality;
-            document.getElementById('age').innerText = age;
-            document.getElementById('weight').innerText = weight;
+            // Voor elke persoon in de data
+            data.forEach(person => {
+                // Maak een div element aan voor de persoon
+                var personDiv = document.createElement('div');
+                personDiv.className = 'person-info';
+
+                // Voeg de gegevens van de persoon toe aan de div
+                personDiv.innerHTML = `
+                    <h2>Gegevens van de persoon:</h2>
+                    <p><strong>Voornaam:</strong> ${person.voornaam}</p>
+                    <p><strong>Achternaam:</strong> ${person.achternaam}</p>
+                    <p><strong>Nationaliteit:</strong> ${person.nationaliteit}</p>
+                    <p><strong>Leeftijd:</strong> ${person.leeftijd}</p>
+                    <p><strong>Gewicht:</strong> ${person.gewicht}</p>
+                `;
+
+                // Voeg de div met persoonsgegevens toe aan de container
+                container.appendChild(personDiv);
+            });
         }
 
         // Functie om JSON-bestand op te halen en verwerken
-        function fetchPersonData() {
+        function fetchPeopleData() {
             // JSON-bestand ophalen
-            fetch('opdracht1_bijlage.json')
+            fetch('opdracht2_bijlage.json')
                 .then(response => response.json())
-                .then(data => showPersonInfo(data))
+                .then(data => showPeopleInfo(data))
                 .catch(error => console.error('Er is een fout opgetreden bij het ophalen van de gegevens:', error));
         }
 
         // Roep de functie aan om gegevens op te halen en weer te geven wanneer de pagina geladen is
-        document.addEventListener('DOMContentLoaded', fetchPersonData);
+        document.addEventListener('DOMContentLoaded', fetchPeopleData);
     </script>
 </body>
 </html>
