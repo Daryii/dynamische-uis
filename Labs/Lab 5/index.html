@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persoonsregister</title>
+    <style>
+        /* Stijlen toevoegen om de weergave te verbeteren */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .person-info {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="personInfo" class="person-info">
+        <h2>Gegevens van de persoon:</h2>
+        <p><strong>Voornaam:</strong> <span id="firstName"></span></p>
+        <p><strong>Achternaam:</strong> <span id="lastName"></span></p>
+        <p><strong>Nationaliteit:</strong> <span id="nationality"></span></p>
+        <p><strong>Leeftijd:</strong> <span id="age"></span></p>
+        <p><strong>Gewicht:</strong> <span id="weight"></span></p>
+    </div>
+
+    <script>
+        // JavaScript om gegevens op te halen en weer te geven
+
+        // Functie om gegevens op te halen en weer te geven
+        function showPersonInfo(data) {
+            // Gegevens ophalen vanuit het JSON-bestand
+            let firstName = data.voornaam;
+            let lastName = data.achternaam;
+            let nationality = data.nationaliteit;
+            let age = data.leeftijd;
+            let weight = data.gewicht;
+
+            // Gegevens toevoegen aan de HTML-elementen
+            document.getElementById('firstName').innerText = firstName;
+            document.getElementById('lastName').innerText = lastName;
+            document.getElementById('nationality').innerText = nationality;
+            document.getElementById('age').innerText = age;
+            document.getElementById('weight').innerText = weight;
+        }
+
+        // Functie om JSON-bestand op te halen en verwerken
+        function fetchPersonData() {
+            // JSON-bestand ophalen
+            fetch('opdracht1_bijlage.json')
+                .then(response => response.json())
+                .then(data => showPersonInfo(data))
+                .catch(error => console.error('Er is een fout opgetreden bij het ophalen van de gegevens:', error));
+        }
+
+        // Roep de functie aan om gegevens op te halen en weer te geven wanneer de pagina geladen is
+        document.addEventListener('DOMContentLoaded', fetchPersonData);
+    </script>
+</body>
+</html>
